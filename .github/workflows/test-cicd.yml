@@ -1,0 +1,25 @@
+name: test-cicd-01
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: install Java 21 SDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      
+      - name: build java app
+        id: build
+        run: chmod +x gradlew && ./gradlew clean build
+
