@@ -24,14 +24,14 @@ jobs:
       - name: install docker env
         uses: docker/setup-docker-action@v4
 
-      - name: build java app
-        id: build
-        run: ./gradlew clean build
+#      - name: build java app
+#        id: build
+#        run: ./gradlew clean build
 
       - name: build docker image
         id: build_docker
         if: success()
-        run: ./gradlew bootBuildImage --imageName=ghcr.io/pedja75/test-app-01:latest
+        run: ./gradlew clean bootBuildImage --imageName=ghcr.io/pedja75/test-app-01:latest
       
       - name: push docker image to github registry
         id: push_image
