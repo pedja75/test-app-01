@@ -56,3 +56,10 @@ processResources {
 tasks.withType(Test) {
     useJUnitPlatform()
 }
+
+tasks.named('bootBuildImage') {
+    image {
+        runImage = "paketobuildpacks/ubuntu-noble-run"
+    }
+}
+
